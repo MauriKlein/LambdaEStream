@@ -26,11 +26,23 @@ public class Garagem {
                 .forEach(veiculo -> System.out.println(veiculo.toString()));
     }
 
+    //Exibe na tela todos os veículos em Ordem crescente de valor;
+    public void mostrarListaDeVeiculosPorValorDecrescente() {
+        listaVeiculos.stream()
+                .sorted((v1,v2) -> v2.getValor().compareTo(v1.getValor()))
+                .forEach(veiculo -> System.out.println(veiculo.toString()));
+    }
+
+
     //Exibe na tela todos os veículos em Ordem Alfabética do Modelo e depois ordem de Valor;
-    public void mostrarListaDeVeiculosPorModeloEPorValor() {
+    public void mostrarListaDeVeiculosPorMarcaEPorValor() {
         listaVeiculos.stream()
                 .sorted(Comparator.comparing(Veiculo::getValor))
-                .sorted(Comparator.comparing(Veiculo::getMarca))
+                //A ordenação pode ser feita desta forma
+                .sorted((v1,v2)-> v1.getMarca().compareTo(v2.getMarca()))
+
+                //Ou desta forma
+                //.sorted(Comparator.comparing(Veiculo::getMarca))
                 .forEach(veiculo -> System.out.println(veiculo.toString()));
     }
 
@@ -48,6 +60,9 @@ public class Garagem {
                 .average();
         return media;
     }
+
+
+
 
 
 

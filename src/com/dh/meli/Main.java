@@ -23,8 +23,11 @@ public class Main {
         System.out.println("\nLISTA ORDENADA POR VALOR");
         garagem.mostrarListaDeVeiculosPorValor();
 
+        System.out.println("\nLISTA ORDENADA POR VALOR DECRESCENTE");
+        garagem.mostrarListaDeVeiculosPorValorDecrescente();
+
         System.out.println("\nLISTA ORDENADA POR MARCA E POR VALOR");
-        garagem.mostrarListaDeVeiculosPorModeloEPorValor();
+        garagem.mostrarListaDeVeiculosPorMarcaEPorValor();
 
         System.out.println("\nLISTA VEICULOS COM VALOR ABAIXO DO VALOR PASSADO POR PARÂMETRO");
         garagem.mostrarListaDeVeiculosComLimiteValor(1000.0);
