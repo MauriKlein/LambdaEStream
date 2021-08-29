@@ -35,6 +35,12 @@ public class Main {
         System.out.println("\nMÉDIA DE VALORES DOS VEÍCULOS DA GARAGEM "
         +garagem.mostrarMediaDeValoresDosVeiculos());
 
+        System.out.println("\nAPLICAR DESCONTO ");
+        garagem.veiculosComDesconto(80.0);
+
+
+
+
 
 
 

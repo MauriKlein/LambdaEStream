@@ -10,6 +10,18 @@ public class Veiculo {
         this.valor = valor;
     }
 
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
     public String getMarca() {
         return marca;
     }

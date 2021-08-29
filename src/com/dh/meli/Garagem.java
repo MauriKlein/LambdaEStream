@@ -1,13 +1,15 @@
 package com.dh.meli;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 
 
 public class Garagem {
     private String cnpj;
-    List<Veiculo> listaVeiculos;
+    List<Veiculo> listaVeiculos= new ArrayList<>();
 
     public Garagem(String cnpj, List<Veiculo> listaVeiculos) {
         this.cnpj = cnpj;
@@ -61,10 +63,15 @@ public class Garagem {
         return media;
     }
 
-
-
-
-
+    //Aplica um desconto em todos os veículos
+    public void veiculosComDesconto(Double desconto) {
+        listaVeiculos.forEach(
+                veiculo -> {
+                    veiculo.setValor(veiculo.getValor() * (desconto / 100));
+                }
+        );
+        listaVeiculos.forEach(System.out::println);
+    }
 
     public String getCnpj() {
         return cnpj;
