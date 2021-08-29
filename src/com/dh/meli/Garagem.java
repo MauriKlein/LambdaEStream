@@ -26,7 +26,7 @@ public class Garagem {
                 .forEach(veiculo -> System.out.println(veiculo.toString()));
     }
 
-    //Exibe na tela todos os veículos em Ordem crescente de valor;
+    //Exibe na tela todos os veículos em Ordem Decrescente de valor;
     public void mostrarListaDeVeiculosPorValorDecrescente() {
         listaVeiculos.stream()
                 .sorted((v1,v2) -> v2.getValor().compareTo(v1.getValor()))
