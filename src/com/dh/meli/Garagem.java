@@ -6,7 +6,7 @@ import java.util.OptionalDouble;
 
 
 public class Garagem {
-    private String cnpj;
+    protected String cnpj;
     List<Veiculo> listaVeiculos;
 
     public Garagem(String cnpj, List<Veiculo> listaVeiculos) {
@@ -39,11 +39,11 @@ public class Garagem {
         listaVeiculos.stream()
                 //Podemos fazer a ordenação de duas formas diferentes.
 
-                //.sorted(Comparator.comparing(Veiculo::getValor))
-                .sorted((v1,v2)->v1.getValor().compareTo(v2.getValor()))
+                .sorted(Comparator.comparing(Veiculo::getValor))
+                //.sorted((v1,v2)->v1.getValor().compareTo(v2.getValor()))
 
-                .sorted((v1,v2)-> v1.getMarca().compareTo(v2.getMarca()))
-                //.sorted(Comparator.comparing(Veiculo::getMarca))
+                .sorted(Comparator.comparing(Veiculo::getMarca))
+                //.sorted((v1,v2)-> v1.getMarca().compareTo(v2.getMarca()))
 
                 .forEach(System.out::println);
     }
@@ -51,35 +51,25 @@ public class Garagem {
     //Exibe Lista de veículos com valor menor a 1000
     public void mostrarListaDeVeiculosComLimiteValor(Double valor) {
         listaVeiculos.stream()
-                .filter(veiculo -> veiculo.getValor()<1000)
+                .filter(veiculo -> veiculo.getValor()<valor)
                 .forEach(System.out::println);
     }
 
     //Retorna a média de todos os carros da garagem
     public OptionalDouble mostrarMediaDeValoresDosVeiculos() {
-        OptionalDouble media = listaVeiculos.stream()
-                .mapToDouble(veiculo -> veiculo.getValor())
+        return listaVeiculos.stream()
+                .mapToDouble(Veiculo::getValor)
                 .average();
-        return media;
     }
 
     //Aplica um desconto em todos os veículos
-    public void veiculosComDesconto(Double desconto) {
+    public void veiculosComDesconto(Double porcetagemDesconto) {
         listaVeiculos.forEach(
                 veiculo -> {
-                    veiculo.setValor(veiculo.getValor() * (desconto / 100));
+                    veiculo.setValor(veiculo.getValor() - veiculo.getValor() * (porcetagemDesconto / 100));
                 }
         );
         listaVeiculos.forEach(System.out::println);
     }
 
-    public String getCnpj() {
-        return cnpj;
     }
-
-    public List<Veiculo> getListaVeiculos() {
-        return listaVeiculos;
-    }
-
-
-}
